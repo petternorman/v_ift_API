@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\JoinModel.cs" />
     <Compile Include="Classes\DatabaseHelper.cs" />
