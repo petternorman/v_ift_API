@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using v_ift.Models;
 
 namespace v_ift.ResponseModels
 {
@@ -12,6 +10,6 @@ namespace v_ift.ResponseModels
 
         public bool IsReady { get; set; }
 
-        public List<Coordinate> Coordinates{ get; set; }
+        public decimal Distance { get; set; }
     }
 }
