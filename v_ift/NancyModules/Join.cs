@@ -1,7 +1,6 @@
 ﻿using System;
 using Nancy;
 using Nancy.ModelBinding;
-using v_ift.Classes;
 using v_ift.Models;
 using v_ift.ResponseModels;
 using v_ift.Classes.Repositories;
@@ -14,14 +13,18 @@ namespace v_ift.NancyModules
         {
             Post["/join", true] = async (x, ct) => 
             {
+                var request = this.Bind<JoinModel>();
 
-                var join = this.Bind<JoinModel>();
+                if (request == null)
+                {
+                    return null;
+                }
 
-                var lobbyGuid = join.LobbyGuid;
+                var lobbyGuid = request.LobbyGuid;
 
                 var player = new Player()
                 {
-                    Name = join.Name,
+                    Name = request.Name,
                     Guid = new Guid()
                 };
 
