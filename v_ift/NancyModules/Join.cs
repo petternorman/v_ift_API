@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Nancy;
 using Nancy.ModelBinding;
+using v_ift.Classes;
 using v_ift.Models;
 using v_ift.ResponseModels;
+using v_ift.Classes.Repositories;
 
 namespace v_ift.NancyModules
 {
@@ -11,19 +12,25 @@ namespace v_ift.NancyModules
     {
         public Join()
         {
-
-            Post["/join/{lobby_id}", true] = async (x, ct) =>
+            Post["/join", true] = async (x, ct) => 
             {
+                IDatabaseHelper databaseHelper = new DatabaseHelper();
+
+                var respository = new Repository(databaseHelper);
+
                 var join = this.Bind<JoinModel>();
 
-                var player = new ResponseModels.Player()
+                var lobbyGuid = join.LobbyGuid;
+
+                var player = new Player()
                 {
                     Name = join.Name,
                     Guid = new Guid()
                 };
 
-                var lobbyGuid = new Guid();
-                var players = new List<Player>();
+                var lobby = respository.GetLobby(lobbyGuid);
+                var players = lobby.Players;
+                players.Add(player);
 
                 var status = new Lobby()
                 {
@@ -33,7 +40,6 @@ namespace v_ift.NancyModules
                 };
 
                 return Response.AsJson(status);
-                //return new Response {StatusCode = HttpStatusCode.OK};
             };
         }
     }
