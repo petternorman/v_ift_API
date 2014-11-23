@@ -15,16 +15,31 @@ namespace v_ift.NancyModules
         {
             Post["/ready", true] = async (x, ct) =>
             {
-                var ready = this.Bind<ReadyModel>();
+                var currentPlayerReady = this.Bind<ReadyModel>();
 
-                var players = new List<Player>()
+                if (currentPlayerReady == null)
                 {
-                    new Player { Guid = new Guid(), Name = "Sandra", IsReady = true }
-                };
+                    return null;
+                }
+
+                // hämta upp rummet. 
+                var lobby = new Lobby();
+                var players = new List<Player>();
+
+                // sätt spelaren till ready
+                var currentPlayer = new Player();
+                currentPlayer.IsReady = true; 
+
+                // spara ner spelaren 
+                // spara ner lobbyn med ny status kanske 
+
+
+                var countReadyPlayers = players.Count(arg => arg.IsReady);
+                var newStatus = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting; 
 
                 var status = new Lobby()
                 {
-                    Status = Enums.Status.Waiting,
+                    Status = newStatus,
                     LobbyGuid = new Guid(),
                     Players = players
                 };

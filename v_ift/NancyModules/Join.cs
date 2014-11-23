@@ -1,5 +1,7 @@
 ﻿using System;
 using Nancy;
+using Nancy.ModelBinding;
+using v_ift.Models;
 
 namespace v_ift.NancyModules
 {
@@ -10,6 +12,10 @@ namespace v_ift.NancyModules
 
             Post["/join/{lobby_id}", true] = async (x, ct) =>
             {
+                var ready = this.Bind<Models.Join>();
+
+
+
                 var join = new ResponseModels.Player();
                 join.Name = "";
                 join.Guid = new Guid();
