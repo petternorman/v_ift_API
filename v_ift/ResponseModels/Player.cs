@@ -8,7 +8,7 @@ namespace v_ift.ResponseModels
         public Player(PlayerDataModel player)
         {
             this.Name = player.Name;
-            this.Guid = player._id.ToString();
+            this.Guid = player.Id;
             this.IsReady = player.IsReady;
             this.Distance = player.Distance;
         }

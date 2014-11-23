@@ -42,14 +42,14 @@ namespace v_ift.Classes.Repositories
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<Player>("Players");
-			collection.Insert(player);
+			collection.Save(player);
 		}
 
 		public void SaveLobby(LobbyDataBaseModel lobby)
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<LobbyDataBaseModel>("Lobbies");
-			collection.Insert(lobby);
+			collection.Save(lobby);
 		}
 	}
 }

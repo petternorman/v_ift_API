@@ -24,7 +24,8 @@ namespace v_ift.NancyModules
 
                 var player = new PlayerDataModel()
                 {
-                    Name = request.Name 
+                    Name = request.Name,
+                    Id = new Guid().ToString()
                 };
 
                 var lobby = repository.GetLobby(request.LobbyId);

@@ -22,7 +22,7 @@ namespace v_ift.NancyModules
                 }
 
                 var lobby = repository.GetLobby(request.LobbyId);
-                var player = lobby.Players.FirstOrDefault(arg => arg._id.ToString() == request.PlayerId);
+                var player = lobby.Players.FirstOrDefault(arg => arg.Id.ToString() == request.PlayerId);
 
                 player.Coordinates.Add(new Coordinate(request.Lat, request.Lng));
 

@@ -31,7 +31,7 @@ namespace v_ift.NancyModules
                     return new Response { StatusCode = HttpStatusCode.NotFound };
                 }
 
-                var player = lobby.Players.FirstOrDefault(arg => arg._id.Equals(request.PlayerId));
+                var player = lobby.Players.FirstOrDefault(arg => arg.Id.Equals(request.PlayerId));
 
                 if (player == null)
                 {

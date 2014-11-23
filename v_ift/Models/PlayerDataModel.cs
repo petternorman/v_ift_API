@@ -14,6 +14,6 @@ namespace v_ift.Models
 
         public List<Coordinate> Coordinates { get; set; }
 
-        public ObjectId _id { get; set; }
+        public string Id { get; set; }
     }
 }
