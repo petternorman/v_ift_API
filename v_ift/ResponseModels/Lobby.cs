@@ -9,15 +9,24 @@ namespace v_ift.ResponseModels
 {
     public class Lobby
     {
-        public Lobby(LobbyDataBaseModel lobbyDataBaseModel, string id)
+        public Lobby(LobbyDataBaseModel lobbyDataBaseModel, string currentPlayerId)
         {
             this.Status = lobbyDataBaseModel.Status;
             this.Players = lobbyDataBaseModel.Players.Select(arg => new Player(arg)).ToList();
             this.LobbyGuid = lobbyDataBaseModel.LobbyName;
             this.Count = lobbyDataBaseModel.Count;
-            this.PlayerToken = id;
+            this.PlayerToken = currentPlayerId;
             this.Distance = lobbyDataBaseModel.Distance;
         }
+
+	    public Lobby(LobbyDataBaseModel lobbyDataBaseModel)
+	    {
+		    this.Status = lobbyDataBaseModel.Status;
+		    this.Players = lobbyDataBaseModel.Players.Select(arg => new Player(arg)).ToList();
+		    this.LobbyGuid = lobbyDataBaseModel.LobbyName;
+		    this.Count = lobbyDataBaseModel.Count;
+		    this.Distance = lobbyDataBaseModel.Distance;
+	    }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Status Status { get; set; }
