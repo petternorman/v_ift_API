@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace v_ift.ResponseModels
+namespace v_ift.Models
 {
-    public class Player
+    public class PlayerDataModel
     {
         public string Name { get; set; }
 
@@ -11,5 +12,7 @@ namespace v_ift.ResponseModels
         public bool IsReady { get; set; }
 
         public decimal Distance { get; set; }
+
+        public List<Coordinate> Coordinates { get; set; }
     }
 }
