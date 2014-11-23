@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using v_ift.Classes;
 using v_ift.Classes.Repositories;
 using v_ift.Models;
@@ -22,15 +23,23 @@ namespace v_ift.NancyModules
                 }
 
                 var lobby = repository.GetLobby(request.LobbyId);
-                var player = lobby.Players.FirstOrDefault(arg => arg.Id.ToString() == request.PlayerId);
+                var player = lobby.Players.FirstOrDefault(arg => arg.Id == request.PlayerId);
+
+                if (player.Coordinates == null)
+                {
+                    player.Coordinates = new List<Coordinate>();
+                }
 
                 player.Coordinates.Add(new Coordinate(request.Lat, request.Lng));
 
                 var distance = calculateDistance.GetDistanceBetween(player.Coordinates);
                 player.Distance = distance;
+
+                player.IsWinner = distance > lobby.Distance;
+
                 repository.SaveLobby(lobby);
 
-                return this.Response.AsJson(new Lobby(lobby));
+                return this.Response.AsJson(new Lobby(lobby, player.Id));
             };
         }
     }

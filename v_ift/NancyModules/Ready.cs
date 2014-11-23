@@ -41,11 +41,11 @@ namespace v_ift.NancyModules
                 // sätt spelaren till ready
                 player.IsReady = true;
 
-                // uppdaterad lobby 
+                // uppdaterad lobby git 
                 var countReadyPlayers = lobby.Players.Count(arg => arg.IsReady);
                 lobby.Status = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting;
 
-                var respone = new Lobby(lobby);
+                var respone = new Lobby(lobby, player.Id);
 
                 repository.SaveLobby(lobby);
 

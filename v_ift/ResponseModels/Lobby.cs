@@ -9,12 +9,14 @@ namespace v_ift.ResponseModels
 {
     public class Lobby
     {
-        public Lobby(LobbyDataBaseModel lobbyDataBaseModel)
+        public Lobby(LobbyDataBaseModel lobbyDataBaseModel, string id)
         {
             this.Status = lobbyDataBaseModel.Status;
             this.Players = lobbyDataBaseModel.Players.Select(arg => new Player(arg)).ToList();
             this.LobbyGuid = lobbyDataBaseModel.LobbyName;
             this.Count = lobbyDataBaseModel.Count;
+            this.PlayerToken = id;
+            this.Distance = lobbyDataBaseModel.Distance;
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -26,7 +28,13 @@ namespace v_ift.ResponseModels
         [JsonProperty(PropertyName = "lobbyguid")]
         public string LobbyGuid { get; set; }
 
-        [JsonProperty(PropertyName = "foobar")]
+        [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
+
+        [JsonProperty(PropertyName = "playerToken")]
+        public string PlayerToken { get; set; }
+
+        [JsonProperty(PropertyName = "distance")]
+        public decimal Distance { get; set; }
     }
 }

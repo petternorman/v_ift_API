@@ -25,5 +25,8 @@ namespace v_ift.ResponseModels
 
         [JsonProperty(PropertyName = "distance")]
         public decimal Distance { get; set; }
+
+        [JsonProperty(PropertyName = "isWinner")]
+        public decimal IsWinner { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace v_ift.NancyModules
                 players.Add(player);
                 repository.SaveLobby(lobby);
 
-                return Response.AsJson(new Lobby(lobby));
+                return Response.AsJson(new Lobby(lobby, player.Id));
             };
         }
     }
