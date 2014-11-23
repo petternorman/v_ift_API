@@ -142,6 +142,7 @@
     <Compile Include="Classes\Repositories\IDistance.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Coordinate.cs" />
+    <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\JoinModel.cs" />
     <Compile Include="Classes\DatabaseHelper.cs" />
