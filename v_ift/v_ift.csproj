@@ -139,8 +139,8 @@
     <Compile Include="Bootstrap\Bootstrapper.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\JoinModel.cs" />
     <Compile Include="Classes\DatabaseHelper.cs" />
-    <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ReadyModel.cs" />
     <Compile Include="NancyModules\Join.cs" />
     <Compile Include="NancyModules\Ready.cs" />
