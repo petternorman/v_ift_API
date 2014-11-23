@@ -7,8 +7,8 @@ namespace v_ift.Classes.Repositories
 {
 	public interface IRepository
 	{
-		Player GetPlayer(Guid id);
-		Lobby GetLobby(Guid id);
+		Player GetPlayer(string id);
+		Lobby GetLobby(string id);
 		void SavePlayer(Player player);
 		void SaveLobby(Lobby lobby);
 	}
@@ -22,7 +22,7 @@ namespace v_ift.Classes.Repositories
 			_databaseHelper = databaseHelper;
 		}
 
-		public Player GetPlayer(Guid id)
+		public Player GetPlayer(string id)
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<Player>("Players");
@@ -30,7 +30,7 @@ namespace v_ift.Classes.Repositories
 
 		}
 
-		public Lobby GetLobby(Guid id)
+		public Lobby GetLobby(string id)
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<Lobby>("Lobbies");

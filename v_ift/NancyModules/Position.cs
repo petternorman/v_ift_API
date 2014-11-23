@@ -9,7 +9,7 @@ namespace v_ift.NancyModules
     {
         public Position(Repository repository, IDistance distance)
         {
-            Post["/ready", true] = async (x, ct) =>
+            Post["/position", true] = async (x, ct) =>
             {
                 var request = this.Bind<PositionModel>();
 

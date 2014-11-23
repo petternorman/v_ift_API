@@ -12,7 +12,7 @@ namespace v_ift.NancyModules
 {
     public class Ready : NancyModule
     {
-        public Ready(Repository repository)
+        public Ready(IRepository repository)
         {
             Post["/ready", true] = async (x, ct) =>
             {
@@ -25,11 +25,17 @@ namespace v_ift.NancyModules
 
                 // hämta upp rummet. 
                 var lobby = repository.GetLobby(request.LobbyId);
+
+                if (lobby == null)
+                {
+                    return new Response { StatusCode = HttpStatusCode.NotFound };
+                }
+
                 var player = lobby.Players.FirstOrDefault(arg => arg.Guid.Equals(request.PlayerId));
 
                 if (player == null)
                 {
-                    return null;
+                    return new Response { StatusCode = HttpStatusCode.NotFound };
                 }
 
                 // sätt spelaren till ready
@@ -38,9 +44,11 @@ namespace v_ift.NancyModules
                 // uppdaterad lobby 
                 var countReadyPlayers = lobby.Players.Count(arg => arg.IsReady);
                 lobby.Status = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting;
-                // repository.
+                repository.SaveLobby(lobby);
 
                 return this.Response.AsJson(lobby);
+
+                return null;
             };
         }
     }

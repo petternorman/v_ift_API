@@ -25,7 +25,7 @@ namespace v_ift.NancyModules
                 var player = new Player()
                 {
                     Name = request.Name,
-                    Guid = new Guid()
+                    Guid = new Guid().ToString()
                 };
 
                 var lobby = repository.GetLobby(lobbyGuid);

@@ -5,6 +5,6 @@ namespace v_ift.Models
     public class JoinModel
     {
         public string Name { get; set; }
-        public Guid LobbyGuid { get; set; }
+        public string LobbyGuid { get; set; }
     }
 }
