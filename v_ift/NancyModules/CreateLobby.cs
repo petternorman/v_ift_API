@@ -18,7 +18,8 @@ namespace v_ift.NancyModules
                     Status = Enums.Status.Waiting,
                     LobbyName = "v_iftlobby0",
                     Players = new List<PlayerDataModel>(),
-                    Count = 1
+                    Count = 1,
+                    Distance = 100
                 };
 
                 repository.SaveLobby(lobby);
