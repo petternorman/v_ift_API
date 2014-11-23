@@ -37,7 +37,7 @@ namespace v_ift.NancyModules
 
                 player.IsWinner = distance >= lobby.Distance;
 
-                lobby.Status = this.IsFinished(lobby.Players, distance) ? Enums.Status.Finish : Enums.Status.Ongoing;
+                lobby.Status = this.IsFinished(lobby.Players, lobby.Distance) ? Enums.Status.Finish : Enums.Status.Ongoing;
 
                 repository.SaveLobby(lobby);
 
@@ -47,12 +47,12 @@ namespace v_ift.NancyModules
 
         private bool IsFinished(IEnumerable<PlayerDataModel> players, decimal distance)
         {
-            var isFinsh = false;
+            var isFinished = false;
             foreach (var player in players)
             {
                 if (player.Distance >= distance)
                 {
-                    isFinsh = player.Distance >= distance;
+	                isFinished = true;
                 }
 
                 else
@@ -60,7 +60,7 @@ namespace v_ift.NancyModules
                     return false;
                 }
             }
-            return isFinsh;
+            return isFinished;
         }
     }
 }
