@@ -11,6 +11,8 @@ namespace v_ift.Bootstrap
 		{
 			container.Register<IDatabaseHelper, DatabaseHelper>();
 			container.Register<IRepository, Repository>();
+
+            container.Register<ICalculateDistance, ICalculateDistance>();
 		}
     }
 }

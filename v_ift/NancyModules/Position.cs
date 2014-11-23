@@ -7,7 +7,7 @@ namespace v_ift.NancyModules
 {
     public class Position : NancyModule
     {
-        public Position(Repository repository)
+        public Position(Repository repository, IDistance distance)
         {
             Post["/ready", true] = async (x, ct) =>
             {

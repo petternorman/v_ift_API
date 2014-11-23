@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using v_ift.Models;
 
-namespace v_ift.Classes.Repositories
+namespace v_ift.Classes
 {
     /// <summary>
     /// Calculates distances between geographical points based upon the 
@@ -11,19 +11,12 @@ namespace v_ift.Classes.Repositories
     /// Haversine formula is less correct than Vincenty, but also less expensive.
     /// This implementation was based upon http://damien.dennehy.me/blog/2011/01/15/haversine-algorithm-in-csharp/
     /// </summary>
-    public class Distance 
+    public class CalculateDistance : ICalculateDistance
     {
-
-        //public decimal GetDistanceBetween(List<Coordinate> coordinates)
-        //{
-        //    var distance = 0;
-        //    for (var i = 0; i < coordinates.Count; i++)
-        //    {
-        //        var temp = this.GetDistanceBetween(coordinates.Take(i), coordinates.Take(i + 1));
-        //    }
-
-        //    return distance;
-        //}
+        public decimal GetDistanceBetween(List<Coordinate> coordinates)
+        {
+            return coordinates.Select((t, i) => this.GetDistanceBetween(t, coordinates[i + 1])).Sum();
+        }
 
         /// <summary>
         /// Radius of the Earth in meters.

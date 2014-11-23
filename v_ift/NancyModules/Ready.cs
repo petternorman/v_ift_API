@@ -38,7 +38,7 @@ namespace v_ift.NancyModules
                 // uppdaterad lobby 
                 var countReadyPlayers = lobby.Players.Count(arg => arg.IsReady);
                 lobby.Status = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting;
-                // repository.SaveLobby(lobby);
+                // repository.
 
                 return this.Response.AsJson(lobby);
             };
