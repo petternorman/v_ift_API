@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using Nancy.ModelBinding;
+using v_ift.Classes.Repositories;
 using v_ift.Models;
 using v_ift.ResponseModels;
 
@@ -11,40 +12,35 @@ namespace v_ift.NancyModules
 {
     public class Ready : NancyModule
     {
-        public Ready()
+        public Ready(Repository repository)
         {
             Post["/ready", true] = async (x, ct) =>
             {
-                var currentPlayerReady = this.Bind<ReadyModel>();
+                var request = this.Bind<ReadyModel>();
 
-                if (currentPlayerReady == null)
+                if (request == null)
                 {
                     return null;
                 }
 
                 // hämta upp rummet. 
-                var lobby = new Lobby();
-                var players = new List<Player>();
+                var lobby = repository.GetLobby(request.LobbyId);
+                var player = lobby.Players.FirstOrDefault(arg => arg.Guid.Equals(request.PlayerId));
+
+                if (player == null)
+                {
+                    return null;
+                }
 
                 // sätt spelaren till ready
-                var currentPlayer = new Player();
-                currentPlayer.IsReady = true; 
+                player.IsReady = true;
 
-                // spara ner spelaren 
-                // spara ner lobbyn med ny status kanske 
+                // uppdaterad lobby 
+                var countReadyPlayers = lobby.Players.Count(arg => arg.IsReady);
+                lobby.Status = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting;
+                // repository.SaveLobby(lobby);
 
-
-                var countReadyPlayers = players.Count(arg => arg.IsReady);
-                var newStatus = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting; 
-
-                var status = new Lobby()
-                {
-                    Status = newStatus,
-                    LobbyGuid = new Guid(),
-                    Players = players
-                };
-
-                return this.Response.AsJson(status);
+                return this.Response.AsJson(lobby);
             };
         }
     }

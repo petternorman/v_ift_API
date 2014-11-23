@@ -7,8 +7,8 @@ namespace v_ift.Models
 {
     public class ReadyModel
     {
-        public string LobbyId { get; set; }
+        public Guid LobbyId { get; set; }
 
-        public string PlayerId { get; set; }
+        public Guid PlayerId { get; set; }
     }
 }
