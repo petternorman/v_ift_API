@@ -13,6 +13,11 @@ namespace v_ift.Classes
     /// </summary>
     public class CalculateDistance : ICalculateDistance
     {
+        public CalculateDistance()
+        {
+            
+        }
+
         public decimal GetDistanceBetween(List<Coordinate> coordinates)
         {
             return coordinates.Select((t, i) => this.GetDistanceBetween(t, coordinates[i + 1])).Sum();

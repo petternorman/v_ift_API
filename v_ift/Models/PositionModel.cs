@@ -7,11 +7,11 @@ namespace v_ift.Models
 {
     public class PositionModel
     {
-        public Guid LobbyId { get; set; }
+        public string LobbyId { get; set; }
 
-        public Guid PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
-        public int Long { get; set; }
+        public int Lng { get; set; }
 
         public int Lat { get; set; }
     }

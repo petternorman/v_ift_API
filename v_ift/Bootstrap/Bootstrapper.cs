@@ -13,6 +13,8 @@ namespace v_ift.Bootstrap
 			container.Register<IRepository, Repository>();
 
             container.Register<ICalculateDistance, CalculateDistance>();
+
+            container.Register<CalculateDistance, CalculateDistance>();
 		}
     }
 }

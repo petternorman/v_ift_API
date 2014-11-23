@@ -1,13 +1,16 @@
-﻿using v_ift.Classes.Repositories;
+﻿using System.Linq;
+using v_ift.Classes;
+using v_ift.Classes.Repositories;
 using v_ift.Models;
 using Nancy;
 using Nancy.ModelBinding;
+using v_ift.ResponseModels;
 
 namespace v_ift.NancyModules
 {
     public class Position : NancyModule
     {
-        public Position(Repository repository, IDistance distance)
+        public Position(Repository repository, ICalculateDistance calculateDistance)
         {
             Post["/position", true] = async (x, ct) =>
             {
@@ -18,14 +21,16 @@ namespace v_ift.NancyModules
                     return null;
                 }
 
-                // spara ner nya kordinater för spelaren
+                var lobby = repository.GetLobby(request.LobbyId);
+                var player = lobby.Players.FirstOrDefault(arg => arg._id.ToString() == request.PlayerId);
 
-                // räkna ut avståndet
+                player.Coordinates.Add(new Coordinate(request.Lat, request.Lng));
 
-                // skicka spelaren 
+                var distance = calculateDistance.GetDistanceBetween(player.Coordinates);
+                player.Distance = distance;
+                repository.SaveLobby(lobby);
 
-                return null;
-
+                return this.Response.AsJson(new Lobby(lobby));
             };
         }
     }
