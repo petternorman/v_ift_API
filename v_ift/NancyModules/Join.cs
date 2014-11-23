@@ -13,33 +13,35 @@ namespace v_ift.NancyModules
         {
             Post["/join", true] = async (x, ct) => 
             {
-                var request = this.Bind<JoinModel>();
+                //var request = this.Bind<JoinModel>();
 
-                if (request == null)
-                {
-                    return null;
-                }
+                //if (request == null)
+                //{
+                //    return null;
+                //}
 
-                var lobbyGuid = request.LobbyGuid;
+                //var lobbyGuid = request.LobbyGuid;
 
-                var player = new Player()
-                {
-                    Name = request.Name,
-                    Guid = new Guid().ToString()
-                };
+                //var player = new Player()
+                //{
+                //    Name = request.Name,
+                //    Guid = new Guid().ToString()
+                //};
 
-                var lobby = repository.GetLobby(lobbyGuid);
-                var players = lobby.Players;
-                players.Add(player);
+                //var lobby = repository.GetLobby(lobbyGuid);
+                //var players = lobby.Players;
+                //players.Add(player);
 
-                var updatedLobby = new Lobby()
-                {
-                    Status = Enums.Status.Waiting,
-                    LobbyGuid = lobbyGuid,
-                    Players = players
-                };
+                //var updatedLobby = new Lobby()
+                //{
+                //    Status = Enums.Status.Waiting,
+                //    LobbyGuid = lobbyGuid,
+                //    Players = players
+                //};
 
-                return Response.AsJson(updatedLobby);
+                //return Response.AsJson(updatedLobby);
+
+                return null;
             };
         }
     }

@@ -142,12 +142,15 @@
     <Compile Include="Classes\Repositories\IDistance.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Coordinate.cs" />
+    <Compile Include="Models\CreateLobby.cs" />
+    <Compile Include="Models\LobbyDataBaseModel.cs" />
     <Compile Include="Models\PlayerDataModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\JoinModel.cs" />
     <Compile Include="Classes\DatabaseHelper.cs" />
     <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\ReadyModel.cs" />
+    <Compile Include="NancyModules\CreateLobby.cs" />
     <Compile Include="NancyModules\Join.cs" />
     <Compile Include="NancyModules\Position.cs" />
     <Compile Include="NancyModules\Ready.cs" />

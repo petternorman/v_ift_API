@@ -31,7 +31,7 @@ namespace v_ift.NancyModules
                     return new Response { StatusCode = HttpStatusCode.NotFound };
                 }
 
-                var player = lobby.Players.FirstOrDefault(arg => arg.Guid.Equals(request.PlayerId));
+                var player = lobby.Players.FirstOrDefault(arg => arg._id.Equals(request.PlayerId));
 
                 if (player == null)
                 {
@@ -44,11 +44,12 @@ namespace v_ift.NancyModules
                 // uppdaterad lobby 
                 var countReadyPlayers = lobby.Players.Count(arg => arg.IsReady);
                 lobby.Status = lobby.Count == countReadyPlayers ? Enums.Status.Ongoing : Enums.Status.Waiting;
+
+                var respone = new Lobby(lobby);
+
                 repository.SaveLobby(lobby);
 
-                return this.Response.AsJson(lobby);
-
-                return null;
+                return this.Response.AsJson(respone);
             };
         }
     }
