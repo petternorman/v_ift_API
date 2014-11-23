@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson;
 using Nancy;
 using Nancy.ModelBinding;
 using v_ift.Models;
@@ -13,35 +15,31 @@ namespace v_ift.NancyModules
         {
             Post["/join", true] = async (x, ct) => 
             {
-                //var request = this.Bind<JoinModel>();
+                var request = this.Bind<JoinModel>();
 
-                //if (request == null)
-                //{
-                //    return null;
-                //}
+                if (request == null)
+                {
+                    return null;
+                }
 
-                //var lobbyGuid = request.LobbyGuid;
+                var player = new PlayerDataModel()
+                {
+                    Name = request.Name 
+                };
 
-                //var player = new Player()
-                //{
-                //    Name = request.Name,
-                //    Guid = new Guid().ToString()
-                //};
+                var lobby = repository.GetLobby(request.LobbyId);
 
-                //var lobby = repository.GetLobby(lobbyGuid);
-                //var players = lobby.Players;
-                //players.Add(player);
+                if (lobby == null)
+                {
+                    return new Response { StatusCode = HttpStatusCode.NotFound };
+                }
 
-                //var updatedLobby = new Lobby()
-                //{
-                //    Status = Enums.Status.Waiting,
-                //    LobbyGuid = lobbyGuid,
-                //    Players = players
-                //};
+                var players = lobby.Players;
+                
+                players.Add(player);
+                repository.SaveLobby(lobby);
 
-                //return Response.AsJson(updatedLobby);
-
-                return null;
+                return Response.AsJson(new Lobby(lobby));
             };
         }
     }
