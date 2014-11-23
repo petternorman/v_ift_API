@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System;
+using Nancy;
 
 namespace v_ift.NancyModules
 {
@@ -7,9 +8,11 @@ namespace v_ift.NancyModules
         public Join()
         {
 
-            Post["/join", true] = async (x, ct) =>
+            Post["/join/{lobby_id}", true] = async (x, ct) =>
             {
-                var join = new ResponseModels.Join();
+                var join = new ResponseModels.Player();
+                join.Name = "";
+                join.Id = new Guid();
                 return Response.AsJson(join);
                 //return new Response {StatusCode = HttpStatusCode.OK};
             };
