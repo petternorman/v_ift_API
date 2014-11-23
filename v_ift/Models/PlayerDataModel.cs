@@ -10,6 +10,8 @@ namespace v_ift.Models
 
         public bool IsReady { get; set; }
 
+        public bool IsWinner { get; set; }
+
         public decimal Distance { get; set; }
 
         public List<Coordinate> Coordinates { get; set; }

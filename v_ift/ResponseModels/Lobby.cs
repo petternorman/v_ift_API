@@ -35,6 +35,6 @@ namespace v_ift.ResponseModels
         public string PlayerToken { get; set; }
 
         [JsonProperty(PropertyName = "distance")]
-        public double Distance { get; set; }
+        public decimal Distance { get; set; }
     }
 }

@@ -34,6 +34,9 @@ namespace v_ift.NancyModules
 
                 var distance = calculateDistance.GetDistanceBetween(player.Coordinates);
                 player.Distance = distance;
+
+                player.IsWinner = distance > lobby.Distance;
+
                 repository.SaveLobby(lobby);
 
                 return this.Response.AsJson(new Lobby(lobby, player.Id));
