@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Classes\DatabaseHelper.cs" />
     <Compile Include="Models\Join.cs" />
     <Compile Include="Models\ReadyModel.cs" />
     <Compile Include="NancyModules\Join.cs" />
