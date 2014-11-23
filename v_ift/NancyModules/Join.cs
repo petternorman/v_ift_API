@@ -12,7 +12,7 @@ namespace v_ift.NancyModules
             {
                 var join = new ResponseModels.Player();
                 join.Name = "";
-                join.Id = new Guid();
+                join.Guid = new Guid();
                 return Response.AsJson(join);
                 //return new Response {StatusCode = HttpStatusCode.OK};
             };
