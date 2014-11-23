@@ -9,5 +9,7 @@ namespace v_ift.ResponseModels
         public Guid Guid { get; set; }
 
         public bool IsReady { get; set; }
+
+        public decimal Distance { get; set; }
     }
 }

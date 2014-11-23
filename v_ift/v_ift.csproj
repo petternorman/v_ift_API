@@ -137,12 +137,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\Bootstrapper.cs" />
+    <Compile Include="Classes\Repositories\Distance.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
+    <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\JoinModel.cs" />
     <Compile Include="Classes\DatabaseHelper.cs" />
+    <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\ReadyModel.cs" />
     <Compile Include="NancyModules\Join.cs" />
+    <Compile Include="NancyModules\Position.cs" />
     <Compile Include="NancyModules\Ready.cs" />
     <Compile Include="NancyModules\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
