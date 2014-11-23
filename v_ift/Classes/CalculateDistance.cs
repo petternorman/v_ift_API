@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using v_ift.Models;
 
 namespace v_ift.Classes

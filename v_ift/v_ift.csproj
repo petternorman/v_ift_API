@@ -139,7 +139,6 @@
     <Compile Include="Bootstrap\Bootstrapper.cs" />
     <Compile Include="Classes\CalculateDistance.cs" />
     <Compile Include="Classes\ICalculateDistance.cs" />
-    <Compile Include="Classes\Repositories\IDistance.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\LobbyDataBaseModel.cs" />
@@ -155,7 +154,6 @@
     <Compile Include="NancyModules\Position.cs" />
     <Compile Include="NancyModules\Ready.cs" />
     <Compile Include="NancyModules\Status.cs" />
-    <Compile Include="NancyModules\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseModels\Player.cs" />
     <Compile Include="ResponseModels\Lobby.cs" />

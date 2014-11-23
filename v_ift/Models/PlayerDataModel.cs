@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using System.Collections.Generic;
 
 namespace v_ift.Models
 {
