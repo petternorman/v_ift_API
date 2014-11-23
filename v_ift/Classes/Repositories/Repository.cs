@@ -10,6 +10,7 @@ namespace v_ift.Classes.Repositories
 		Player GetPlayer(Guid id);
 		Lobby GetLobby(Guid id);
 		void SavePlayer(Player player);
+		void SaveLobby(Lobby lobby);
 	}
 
 	public class Repository : IRepository
@@ -41,6 +42,13 @@ namespace v_ift.Classes.Repositories
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<Player>("Players");
 			collection.Insert(player);
+		}
+
+		public void SaveLobby(Lobby lobby)
+		{
+			var db = _databaseHelper.GetMongoDatabase();
+			var collection = db.GetCollection<Lobby>("Lobbies");
+			collection.Insert(lobby);
 		}
 	}
 }
