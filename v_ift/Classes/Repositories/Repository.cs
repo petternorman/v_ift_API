@@ -12,6 +12,7 @@ namespace v_ift.Classes.Repositories
 		LobbyDataBaseModel GetLobby(string id);
 		void SavePlayer(Player player);
 		void SaveLobby(LobbyDataBaseModel lobby);
+	    void RemoveAllLobbys();
 	}
 
 	public class Repository : IRepository
@@ -51,5 +52,12 @@ namespace v_ift.Classes.Repositories
 			var collection = db.GetCollection<LobbyDataBaseModel>("Lobbies");
 			collection.Save(lobby);
 		}
+
+        public void RemoveAllLobbys()
+        {
+            var db = _databaseHelper.GetMongoDatabase();
+            var collection = db.GetCollection<LobbyDataBaseModel>("Lobbies");
+            collection.RemoveAll();
+        }
 	}
 }

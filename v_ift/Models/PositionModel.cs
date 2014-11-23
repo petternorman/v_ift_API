@@ -15,9 +15,9 @@ namespace v_ift.Models
         public string PlayerId { get; set; }
 
         [JsonProperty(PropertyName = "lng")]
-        public int Lng { get; set; }
+        public double Lng { get; set; }
 
         [JsonProperty(PropertyName = "lat")]
-        public int Lat { get; set; }
+        public double Lat { get; set; }
     }
 }
