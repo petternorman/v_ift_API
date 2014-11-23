@@ -142,7 +142,6 @@
     <Compile Include="Classes\Repositories\IDistance.cs" />
     <Compile Include="Classes\Repositories\Repository.cs" />
     <Compile Include="Models\Coordinate.cs" />
-    <Compile Include="Models\CreateLobby.cs" />
     <Compile Include="Models\LobbyDataBaseModel.cs" />
     <Compile Include="Models\PlayerDataModel.cs" />
     <Compile Include="Models\Enums.cs" />

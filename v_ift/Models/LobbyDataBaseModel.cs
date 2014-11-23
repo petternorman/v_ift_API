@@ -21,5 +21,7 @@ namespace v_ift.Models
         public int Count { get; set; }
 
         public ObjectId _id { get; set; }
+
+        public double Distance { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace v_ift.ResponseModels
             this.LobbyGuid = lobbyDataBaseModel.LobbyName;
             this.Count = lobbyDataBaseModel.Count;
             this.PlayerToken = id;
+            this.Distance = lobbyDataBaseModel.Distance;
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -32,5 +33,8 @@ namespace v_ift.ResponseModels
 
         [JsonProperty(PropertyName = "playerToken")]
         public string PlayerToken { get; set; }
+
+        [JsonProperty(PropertyName = "distance")]
+        public double Distance { get; set; }
     }
 }
