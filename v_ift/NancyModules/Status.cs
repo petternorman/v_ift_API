@@ -11,23 +11,10 @@ namespace v_ift.NancyModules
 	{
 		public Status(IRepository repository)
 		{
-			Get["/getlobby", true] = async (x, ct) =>
+			Get["/getlobby/{lobbyId}"] = parameters =>
 			{
-				var request = this.Bind<LobbyModel>();
-
-				if (request == null)
-				{
-					return null;
-				}
-
-				var lobby = repository.GetLobby(request.LobbyId);
-
-				if (lobby == null)
-				{
-					return new Response {StatusCode = HttpStatusCode.NotFound};
-				}
-
-				return Response.AsJson(new Lobby(lobby));
+				var lobby = repository.GetLobby(parameters.lobbyId);
+				return FormatterExtensions.AsJson(this.Response, new Lobby(lobby));
 			};
 		}
 	}
