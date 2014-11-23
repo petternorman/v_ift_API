@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using Nancy;
-using Nancy.ModelBinding;
+﻿using Nancy;
 using v_ift.Classes.Repositories;
-using v_ift.Models;
 using v_ift.ResponseModels;
 
 namespace v_ift.NancyModules

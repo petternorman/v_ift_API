@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using v_ift.Models;
 
 namespace v_ift.ResponseModels

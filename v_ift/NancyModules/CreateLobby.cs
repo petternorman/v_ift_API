@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Nancy;
-using Nancy.ModelBinding;
 using v_ift.Classes.Repositories;
 using v_ift.Models;
-using v_ift.ResponseModels;
 
 namespace v_ift.NancyModules
 {
