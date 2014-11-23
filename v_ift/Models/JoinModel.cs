@@ -1,6 +1,6 @@
 ﻿namespace v_ift.Models
 {
-    public class Join
+    public class JoinModel
     {
         public string Name { get; set; }
     }

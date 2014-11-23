@@ -1,22 +1,20 @@
-﻿using System.Configuration;
-using MongoDB.Driver;
-using Nancy;
+﻿using Nancy;
+using v_ift.Classes;
 
 namespace v_ift.NancyModules
 {
 	public class Test : NancyModule
 	{
-		public MongoDatabase Database
+		private readonly IDatabaseHelper _databaseHelper;
+
+		public Test(IDatabaseHelper databaseHelper)
 		{
-			get
-			{
-				var connectionstring = ConfigurationManager.AppSettings.Get("(MONGOHQ_URL|MONGOLAB_URI)");
-				var url = new MongoUrl(connectionstring);
-				var client = new MongoClient(url);
-				var server = client.GetServer();
-				var database = server.GetDatabase(url.DatabaseName);
-				return database;
-			}
+			_databaseHelper = databaseHelper;
+		}
+
+		public void TestDB()
+		{
+			var database = _databaseHelper.GetMongoDatabase();
 		}
 	}
 
