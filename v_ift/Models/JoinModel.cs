@@ -1,7 +1,10 @@
-﻿namespace v_ift.Models
+﻿using System;
+
+namespace v_ift.Models
 {
     public class JoinModel
     {
         public string Name { get; set; }
+        public Guid LobbyGuid { get; set; }
     }
 }
