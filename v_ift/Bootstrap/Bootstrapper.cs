@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Nancy;
 
 namespace v_ift.Bootstrap
 {
-    public class Bootstrapper
+    public class Bootstrapper : DefaultNancyBootstrapper
     {
     }
 }
