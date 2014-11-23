@@ -10,13 +10,10 @@ namespace v_ift.NancyModules
 {
     public class Join : NancyModule
     {
-        public Join()
+        public Join(IRepository repository)
         {
             Post["/join", true] = async (x, ct) => 
             {
-                IDatabaseHelper databaseHelper = new DatabaseHelper();
-
-                var respository = new Repository(databaseHelper);
 
                 var join = this.Bind<JoinModel>();
 
@@ -28,7 +25,7 @@ namespace v_ift.NancyModules
                     Guid = new Guid()
                 };
 
-                var lobby = respository.GetLobby(lobbyGuid);
+                var lobby = repository.GetLobby(lobbyGuid);
                 var players = lobby.Players;
                 players.Add(player);
 
