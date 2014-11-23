@@ -35,9 +35,7 @@ namespace v_ift.Classes.Repositories
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<LobbyDataBaseModel>("Lobbies");
-		    var test = collection.AsQueryable<LobbyDataBaseModel>();
-                
-              return  test.FirstOrDefault(l => l.LobbyName == id);
+			return collection.AsQueryable<LobbyDataBaseModel>().FirstOrDefault(l => l.LobbyName == id);
 		}
 
 		public void SavePlayer(Player player)
