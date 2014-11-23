@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using MongoDB.Driver.Linq;
 using v_ift.ResponseModels;
 
 namespace v_ift.Classes.Repositories
@@ -7,7 +9,7 @@ namespace v_ift.Classes.Repositories
 	{
 		Player GetPlayer(Guid id);
 		Lobby GetLobby(Guid id);
-		bool SavePlayer(Player player);
+		void SavePlayer(Player player);
 	}
 
 	public class Repository : IRepository
@@ -21,17 +23,24 @@ namespace v_ift.Classes.Repositories
 
 		public Player GetPlayer(Guid id)
 		{
-			return null;
+			var db = _databaseHelper.GetMongoDatabase();
+			var collection = db.GetCollection<Player>("Players");
+			return collection.AsQueryable<Player>().FirstOrDefault(p => p.Guid == id);
+
 		}
 
 		public Lobby GetLobby(Guid id)
 		{
-			return null;
+			var db = _databaseHelper.GetMongoDatabase();
+			var collection = db.GetCollection<Lobby>("Lobbies");
+			return collection.AsQueryable<Lobby>().FirstOrDefault(l => l.LobbyGuid == id);
 		}
 
-		public bool SavePlayer(Player player)
+		public void SavePlayer(Player player)
 		{
-			return false;
+			var db = _databaseHelper.GetMongoDatabase();
+			var collection = db.GetCollection<Player>("Players");
+			collection.Insert(player);
 		}
 	}
 }
