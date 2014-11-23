@@ -12,7 +12,7 @@ namespace v_ift.Classes
 	{
 		public MongoDatabase GetMongoDatabase()
 		{
-			var connectionstring = ConfigurationManager.AppSettings.Get("(MONGOHQ_URL|MONGOLAB_URI)");
+            var connectionstring = ConfigurationManager.AppSettings.Get("MONGOLAB_URI");
 			var url = new MongoUrl(connectionstring);
 			var client = new MongoClient(url);
 			var server = client.GetServer();

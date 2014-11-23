@@ -13,7 +13,7 @@ namespace v_ift.ResponseModels
 
         public List<Player> Players { get; set; }
 
-        public Guid LobbyGuid { get; set; }
+        public string LobbyGuid { get; set; }
 
         public int Count { get; set; }
     }
