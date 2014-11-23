@@ -20,7 +20,18 @@ namespace v_ift.Classes
 
         public decimal GetDistanceBetween(List<Coordinate> coordinates)
         {
-            return coordinates.Select((t, i) => this.GetDistanceBetween(t, coordinates[i + 1])).Sum();
+            if (coordinates.Count == 1)
+            {
+                return 0;
+            }
+
+            decimal distance = 0;
+            for (var i = 0; i < coordinates.Count - 1; i++)
+            {
+                distance += this.GetDistanceBetween(coordinates[i], coordinates[i + 1]);
+            }
+
+            return distance;
         }
 
         /// <summary>
