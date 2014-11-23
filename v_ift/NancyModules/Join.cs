@@ -32,14 +32,14 @@ namespace v_ift.NancyModules
                 var players = lobby.Players;
                 players.Add(player);
 
-                var status = new Lobby()
+                var updatedLobby = new Lobby()
                 {
                     Status = Enums.Status.Waiting,
                     LobbyGuid = lobbyGuid,
                     Players = players
                 };
 
-                return Response.AsJson(status);
+                return Response.AsJson(updatedLobby);
             };
         }
     }
