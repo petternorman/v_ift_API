@@ -1,15 +1,23 @@
-﻿using Nancy;
+﻿using System.Configuration;
+using MongoDB.Driver;
+using Nancy;
 
 namespace v_ift.NancyModules
 {
-    public class Test : NancyModule
-    {
-        public Test()
-        {
-            this.Get["/test/{id}/}"] = parameters =>
-            {
-                return new Response {StatusCode = HttpStatusCode.OK};
-            };
-        }
-    }
+	public class Test : NancyModule
+	{
+		public MongoDatabase Database
+		{
+			get
+			{
+				var connectionstring = ConfigurationManager.AppSettings.Get("(MONGOHQ_URL|MONGOLAB_URI)");
+				var url = new MongoUrl(connectionstring);
+				var client = new MongoClient(url);
+				var server = client.GetServer();
+				var database = server.GetDatabase(url.DatabaseName);
+				return database;
+			}
+		}
+	}
+
 }
