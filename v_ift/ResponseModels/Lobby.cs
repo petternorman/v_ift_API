@@ -20,10 +20,13 @@ namespace v_ift.ResponseModels
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Status Status { get; set; }
 
+        [JsonProperty(PropertyName = "players")]
         public List<Player> Players { get; set; }
 
+        [JsonProperty(PropertyName = "lobbyguid")]
         public string LobbyGuid { get; set; }
 
+        [JsonProperty(PropertyName = "foobar")]
         public int Count { get; set; }
     }
 }

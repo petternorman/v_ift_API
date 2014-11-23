@@ -27,7 +27,7 @@ namespace v_ift.Classes.Repositories
 		{
 			var db = _databaseHelper.GetMongoDatabase();
 			var collection = db.GetCollection<Player>("Players");
-			return collection.AsQueryable<Player>().FirstOrDefault(p => p.Guid == id);
+			return collection.AsQueryable<Player>().FirstOrDefault(p => p.Id == id);
 
 		}
 
