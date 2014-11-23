@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using v_ift.Classes;
 using v_ift.Classes.Repositories;
 using v_ift.Models;
@@ -35,12 +36,32 @@ namespace v_ift.NancyModules
                 var distance = calculateDistance.GetDistanceBetween(player.Coordinates);
                 player.Distance = distance;
 
-                player.IsWinner = distance > lobby.Distance;
+                player.IsWinner = distance >= lobby.Distance;
+
+                lobby.Status = this.IsFinsh(lobby.Players, distance) ? Enums.Status.Finish : Enums.Status.Ongoing;
 
                 repository.SaveLobby(lobby);
 
                 return this.Response.AsJson(new Lobby(lobby, player.Id));
             };
+        }
+
+        private bool IsFinsh(IEnumerable<PlayerDataModel> players, decimal distance)
+        {
+            var isFinsh = false;
+            foreach (var player in players)
+            {
+                if (player.Distance >= distance)
+                {
+                    isFinsh = player.Distance >= distance;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+            return isFinsh;
         }
     }
 }
